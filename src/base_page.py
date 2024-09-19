@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common import keys
 import loctrs
 
+
 class LoginPage:
     def __init__(self, driver):
         self.driver = driver
@@ -13,5 +14,6 @@ class LoginPage:
         self.driver.find_element(*self.locator.PASSWORD).send_keys(password)
         self.driver.find_element(*self.locator.USERNAME).send_keys(username)
         self.driver.find_element(*self.locator.LOGIN_BUTTON).click()
+
 
 
