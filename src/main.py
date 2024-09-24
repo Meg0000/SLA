@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import unittest
+import pytest
 import time
 from base_page import LoginPage
 
@@ -26,7 +27,7 @@ class MainMagic:
         self.driver.find_element(By.NAME, "login-button").click()
 
     def correct_login(self):
-        loginpage = LoginPage(self.driver)
+        loginpage = LoginPage()
         loginpage.login(PASSWORD, USERNAME)
 
     def current_url(self):
@@ -39,6 +40,9 @@ class LoginTest(unittest.TestCase):
         x = MainMagic()
         x.start()
         x.correct_login()
+
+        # expected url = inventory page because this is where we should land after successful login,
+        # and it's accessible only if we are logged in.
         expected_url = "https://www.saucedemo.com/inventory.html"
         current_url = x.current_url()
         self.assertEqual(current_url, expected_url)
@@ -50,7 +54,7 @@ x.test_if_login_correct()
 if __name__ == '__main__':
     unittest.main()
 
-# todo: review last test-where it is stored, how to add messages etc.
+
 # todo: LoginTest - optimise, change 'x' value to sth more readable
 # todo: correct login,wrong login etc - reorganise to be more readable, add tests
 
