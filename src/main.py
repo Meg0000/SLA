@@ -42,7 +42,7 @@ class LoginTest(unittest.TestCase):
         expected_url = "https://www.saucedemo.com/inventory.html"
         current_url = x.current_url()
         self.assertEqual(current_url, expected_url)
-
+        
 
 x = LoginTest()
 x.test_if_login_correct()
