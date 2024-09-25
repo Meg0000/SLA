@@ -26,7 +26,8 @@ class MainMagic:
         MainMagic.start()
         self.driver.find_element(By.NAME, "login-button").click()
 
-    def correct_login(self):
+    @staticmethod
+    def correct_login():
         loginpage = LoginPage()
         loginpage.login(PASSWORD, USERNAME)
 
@@ -55,7 +56,7 @@ if __name__ == '__main__':
     unittest.main()
 
 
-# todo: LoginTest - optimise, change 'x' value to sth more readable
+
 # todo: correct login,wrong login etc - reorganise to be more readable, add tests
 
 '''class EmptyLoginCredentials(unittest.TestCase):

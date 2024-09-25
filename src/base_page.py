@@ -16,7 +16,6 @@ class BasePage:
 
 
 class LoginPage(BasePage):
-    
     def __init__(self):
         super().__init__()
         self.locator = loctrs.LoginLoc
@@ -29,5 +28,15 @@ class LoginPage(BasePage):
         time.sleep(3)
 
 
+class InventoryPage(BasePage):
+    def __init__(self):
+        super().__init__()
+        self.locator = loctrs.InventoryLoc
+
+# todo: 20222F bg + iceberg
+# todo: customer path: login>add to cart> checkout
+
+'''
 t1 = LoginPage()
 t1.login("secret_sauce", "standard_user")
+'''
