@@ -56,9 +56,3 @@ if __name__ == '__main__':
     unittest.main()
 
 
-
-# todo: correct login,wrong login etc - reorganise to be more readable, add tests
-
-'''class EmptyLoginCredentials(unittest.TestCase):
-    def empty_creds_error(self):
-        self.assertEqual()'''
