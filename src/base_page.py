@@ -33,7 +33,15 @@ class InventoryPage(BasePage):
         super().__init__()
         self.locator = loctrs.InventoryLoc
 
-# todo: 20222F bg + iceberg
+    def add_to_cart_inv_page(self):
+        self.driver.find_element(*self.locator.SAUCE_LABS_BACKPACK_TO_CART).click()
+        element = WebDriverWait(EC.visibility_of_element_located(self.locator.SHOPPING_CART_ITEM_COUNT))
+        cart_count = element.txt
+        print(cart_count)
+
+
+
+
 # todo: customer path: login>add to cart> checkout
 
 '''

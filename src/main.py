@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 import unittest
 import pytest
 import time
-from base_page import LoginPage
+from base_page import *
 
 #CONSTANTS
 LOGIN_PAGE = "https://www.saucedemo.com/"
@@ -47,12 +47,17 @@ class LoginTest(unittest.TestCase):
         expected_url = "https://www.saucedemo.com/inventory.html"
         current_url = x.current_url()
         self.assertEqual(current_url, expected_url)
-        
 
-x = LoginTest()
-x.test_if_login_correct()
 
+x = MainMagic()
+x.start()
+x.correct_login()
+y = InventoryPage()
+y.add_to_cart_inv_page()
+
+
+'''
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main()'''
 
 
