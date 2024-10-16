@@ -5,7 +5,7 @@ import pytest
 import time
 from base_page import *
 
-#CONSTANTS
+# CONSTANTS
 LOGIN_PAGE = "https://www.saucedemo.com/"
 PASSWORD = "secret_sauce"
 # should add correct usernames as csv?
@@ -15,6 +15,7 @@ USERNAME = "standard_user"
 class MainMagic:
     def __init__(self):
         self.options = webdriver.ChromeOptions()
+        # self.options.add_argument("--headless=new")
         self.options.add_argument("--disable-search-engine-choice-screen")
         self.options.add_argument("disable-infobars")
         self.driver = webdriver.Chrome(options=self.options)
@@ -23,12 +24,11 @@ class MainMagic:
         self.driver.get(LOGIN_PAGE)
 
     def wrong_login(self):
-        MainMagic.start()
+        MainMagic.start(self)
         self.driver.find_element(By.NAME, "login-button").click()
 
-    @staticmethod
-    def correct_login():
-        loginpage = LoginPage()
+    def correct_login(self):
+        loginpage = LoginPage(self.driver)
         loginpage.login(PASSWORD, USERNAME)
 
     def current_url(self):
@@ -36,7 +36,8 @@ class MainMagic:
         return expected_url
 
 
-class LoginTest(unittest.TestCase):
+
+'''class LoginTest(unittest.TestCase):
     def test_if_login_correct(self):
         x = MainMagic()
         x.start()
@@ -46,18 +47,10 @@ class LoginTest(unittest.TestCase):
         # and it's accessible only if we are logged in.
         expected_url = "https://www.saucedemo.com/inventory.html"
         current_url = x.current_url()
-        self.assertEqual(current_url, expected_url)
-
+        self.assertEqual(current_url, expected_url)'''
 
 x = MainMagic()
 x.start()
 x.correct_login()
-y = InventoryPage()
-y.add_to_cart_inv_page()
-
-
-'''
-if __name__ == '__main__':
-    unittest.main()'''
 
 

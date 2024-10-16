@@ -7,30 +7,21 @@ from selenium.webdriver.common import keys
 import loctrs
 
 
-class BasePage:
-    def __init__(self):
-        self.options = webdriver.ChromeOptions()
-        self.options.add_argument("--disable-search-engine-choice-screen")
-        self.options.add_argument("disable-infobars")
-        self.driver = webdriver.Chrome(options=self.options)
-
-
-class LoginPage(BasePage):
-    def __init__(self):
-        super().__init__()
+class LoginPage:
+    def __init__(self, driver):
+        self.driver = driver
         self.locator = loctrs.LoginLoc
 
     def login(self, password, username):
-        self.driver.get("https://www.saucedemo.com/")
         self.driver.find_element(*self.locator.PASSWORD).send_keys(password)
         self.driver.find_element(*self.locator.USERNAME).send_keys(username)
         self.driver.find_element(*self.locator.LOGIN_BUTTON).click()
         time.sleep(3)
 
 
-class InventoryPage(BasePage):
-    def __init__(self):
-        super().__init__()
+class InventoryPage:
+    def __init__(self, driver):
+        self.driver = driver
         self.locator = loctrs.InventoryLoc
 
     def add_to_cart_inv_page(self):
@@ -39,12 +30,5 @@ class InventoryPage(BasePage):
         cart_count = element.txt
         print(cart_count)
 
-
-
-
 # todo: customer path: login>add to cart> checkout
-
-'''
-t1 = LoginPage()
-t1.login("secret_sauce", "standard_user")
-'''
+# todo: cookies for easier login
