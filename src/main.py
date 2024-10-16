@@ -15,7 +15,7 @@ USERNAME = "standard_user"
 class MainMagic:
     def __init__(self):
         self.options = webdriver.ChromeOptions()
-        # self.options.add_argument("--headless=new")
+        self.options.add_argument("--headless=new")
         self.options.add_argument("--disable-search-engine-choice-screen")
         self.options.add_argument("disable-infobars")
         self.driver = webdriver.Chrome(options=self.options)
@@ -23,7 +23,7 @@ class MainMagic:
     def start(self):
         self.driver.get(LOGIN_PAGE)
 
-    def wrong_login(self):
+    def empty_login(self):
         MainMagic.start(self)
         self.driver.find_element(By.NAME, "login-button").click()
 
