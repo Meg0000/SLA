@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 
-class LoginLoc:
+class LoginLoctrs:
 
     USERNAME = (By.NAME, "user-name")
     PASSWORD = (By.NAME, "password")
@@ -10,7 +10,7 @@ class LoginLoc:
     ERROR_MSG = (By.XPATH, "//h3[@data-test='error']")
 
 
-class InventoryLoc:
+class InventoryLoctrs:
 
     SAUCE_LABS_BACKPACK_TO_CART = (By.ID, "add-to-cart-sauce-labs-backpack")
     SHOPPING_CART_ITEM_COUNT = (By.CSS_SELECTOR, '[data-test="shopping-cart-badge"]')

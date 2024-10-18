@@ -20,16 +20,18 @@ class MainMagic:
         self.options.add_argument("disable-infobars")
         self.driver = webdriver.Chrome(options=self.options)
 
+        # todo: do that with all page objects
+        self.loginpage = LoginPage(self.driver)
+
+
     def start(self):
         self.driver.get(LOGIN_PAGE)
 
     def empty_login(self):
-        MainMagic.start(self)
         self.driver.find_element(By.NAME, "login-button").click()
 
     def correct_login(self):
-        loginpage = LoginPage(self.driver)
-        loginpage.login(PASSWORD, USERNAME)
+        self.loginpage.login(USERNAME, PASSWORD)
 
     def current_url(self):
         expected_url = self.driver.current_url
@@ -51,6 +53,10 @@ class MainMagic:
 
 x = MainMagic()
 x.start()
-x.correct_login()
+x.loginpage.login(USERNAME, PASSWORD)
+print(x.current_url())
+
+
+
 
 

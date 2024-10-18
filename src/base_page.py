@@ -10,11 +10,12 @@ import loctrs
 class LoginPage:
     def __init__(self, driver):
         self.driver = driver
-        self.locator = loctrs.LoginLoc
+        self.locator = loctrs.LoginLoctrs
 
-    def login(self, password, username):
-        self.driver.find_element(*self.locator.PASSWORD).send_keys(password)
+    def login(self, username, password):
+        self.driver.get("https://www.saucedemo.com/")
         self.driver.find_element(*self.locator.USERNAME).send_keys(username)
+        self.driver.find_element(*self.locator.PASSWORD).send_keys(password)
         self.driver.find_element(*self.locator.LOGIN_BUTTON).click()
         time.sleep(3)
 
@@ -22,7 +23,7 @@ class LoginPage:
 class InventoryPage:
     def __init__(self, driver):
         self.driver = driver
-        self.locator = loctrs.InventoryLoc
+        self.locator = loctrs.InventoryLoctrs
 
     def add_to_cart_inv_page(self):
         self.driver.find_element(*self.locator.SAUCE_LABS_BACKPACK_TO_CART).click()
@@ -30,5 +31,6 @@ class InventoryPage:
         cart_count = element.txt
         print(cart_count)
 
-# todo: customer path: login>add to cart> checkout
+# todo: repair add_to_cart function
 # todo: cookies for easier login
+
