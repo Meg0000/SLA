@@ -22,6 +22,7 @@ class MainMagic:
 
         # todo: do that with all page objects
         self.loginpage = LoginPage(self.driver)
+        self.inventory_page = InventoryPage(self.driver)
 
 
     def start(self):
@@ -54,6 +55,7 @@ class MainMagic:
 x = MainMagic()
 x.start()
 x.loginpage.login(USERNAME, PASSWORD)
+x.inventory_page.add_to_cart_inv_page()
 print(x.current_url())
 
 
