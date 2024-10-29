@@ -21,9 +21,10 @@ class MainMagic:
         self.driver = webdriver.Chrome(options=self.options)
 
         # todo: do that with all page objects
-        self.loginpage = LoginPage(self.driver)
+        self.login_page = LoginPage(self.driver)
         self.inventory_page = InventoryPage(self.driver)
-
+        self.cart_page = CartPage(self.driver)
+        self.checkout_page = CheckoutPage(self.driver)
 
     def start(self):
         self.driver.get(LOGIN_PAGE)
@@ -31,8 +32,11 @@ class MainMagic:
     def empty_login(self):
         self.driver.find_element(By.NAME, "login-button").click()
 
+    def locator_check(self):
+        self.driver.find_element(*self.inventory_page.locator.BIKE_LIGHT_LINK).click()
+
     def correct_login(self):
-        self.loginpage.login(USERNAME, PASSWORD)
+        self.login_page.login(USERNAME, PASSWORD)
 
     def current_url(self):
         expected_url = self.driver.current_url
@@ -54,9 +58,12 @@ class MainMagic:
 
 x = MainMagic()
 x.start()
-x.loginpage.login(USERNAME, PASSWORD)
+x.login_page.login(USERNAME, PASSWORD)
 x.inventory_page.add_to_cart_inv_page()
 print(x.current_url())
+x.locator_check()
+print(x.current_url())
+
 
 
 

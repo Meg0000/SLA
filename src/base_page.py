@@ -15,12 +15,17 @@ class BasePage:
 class LoginPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
-        self.locator = loctrs.LoginLocators
+        self.locator = locators.LoginLocators
 
     def login(self, username, password):
         self.driver.get("https://www.saucedemo.com/")
-        self.driver.find_element(*self.locator.USERNAME).send_keys(username)
-        self.driver.find_element(*self.locator.PASSWORD).send_keys(password)
+
+        WebDriverWait(self.driver, 3).until(
+            EC.visibility_of_element_located(self.locator.USERNAME_LOCATOR)
+        )
+
+        self.driver.find_element(*self.locator.USERNAME_LOCATOR).send_keys(username)
+        self.driver.find_element(*self.locator.PASSWORD_LOCATOR).send_keys(password)
         self.driver.find_element(*self.locator.LOGIN_BUTTON).click()
         time.sleep(3)
 
@@ -28,16 +33,30 @@ class LoginPage(BasePage):
 class InventoryPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
-        self.locator = loctrs.InventoryLocators
+        self.locator = locators.InventoryLocators
 
     def add_to_cart_inv_page(self):
-        self.driver.find_element(*self.locator.SAUCE_LABS_BACKPACK_TO_CART).click()
+        self.driver.find_element(*self.locator.BACKPACK_TO_CART).click()
 
         element = WebDriverWait(self.driver, 3).until(
             EC.visibility_of_element_located(self.locator.SHOPPING_CART_ITEM_COUNT)
         )
         cart_count = element.text
         print("items in cart:", cart_count)
+
+
+class CartPage(BasePage):
+    def __init__(self, driver):
+        super().__init__(driver)
+        self.locator = locators.CartLocators
+
+
+class CheckoutPage(BasePage):
+    def __init__(self, driver):
+        super().__init__(driver)
+        self.locator = locators.CheckoutLocators
+
+
 
 
 # todo: cookies for easier login
