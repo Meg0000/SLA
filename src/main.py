@@ -33,7 +33,7 @@ class MainMagic:
         self.driver.find_element(By.NAME, "login-button").click()
 
     def locator_check(self):
-        self.driver.find_element(*self.inventory_page.locator.BIKE_LIGHT_LINK).click()
+        self.driver.find_element(self.inventory_page.locator.BIKE_LIGHT_LINK).click()
 
     def correct_login(self):
         self.login_page.login(USERNAME, PASSWORD)
@@ -43,26 +43,16 @@ class MainMagic:
         return expected_url
 
 
-
-'''class LoginTest(unittest.TestCase):
-    def test_if_login_correct(self):
-        x = MainMagic()
-        x.start()
-        x.correct_login()
-
-        # expected url = inventory page because this is where we should land after successful login,
-        # and it's accessible only if we are logged in.
-        expected_url = "https://www.saucedemo.com/inventory.html"
-        current_url = x.current_url()
-        self.assertEqual(current_url, expected_url)'''
-
 x = MainMagic()
 x.start()
 x.login_page.login(USERNAME, PASSWORD)
-x.inventory_page.add_to_cart_inv_page()
+
+x.inventory_page.add_to_cart()
+x.inventory_page.go_to_cart()
+x.cart_page.get_cart_item_count()
+
 print(x.current_url())
-x.locator_check()
-print(x.current_url())
+
 
 
 
