@@ -35,10 +35,6 @@ class LoginPage(BasePage):
         time.sleep(3)
 
 
-
-
-
-
 class InventoryPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
@@ -54,6 +50,9 @@ class InventoryPage(BasePage):
 
     def go_to_cart(self):
         self.driver.find_element(*self.locator.GO_TO_CART).click()
+
+def inventory_items_lst(self):
+    
 
 
 

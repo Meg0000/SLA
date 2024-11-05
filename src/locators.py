@@ -14,7 +14,7 @@ class InventoryLocators:
     INVENTORY_CART_ITEM_COUNT = (By.CSS_SELECTOR, '[data-test="shopping-cart-badge"]')
     BIKE_LIGHT_LINK = (By.XPATH, "//div[normalize-space()='Sauce Labs Bike Light']")
     GO_TO_CART = (By.XPATH, "//a[@class=\'shopping_cart_link\']")
-    # todo: get all items names locators>append to list
+
 
 
 class CartLocators:
