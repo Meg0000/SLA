@@ -1,9 +1,7 @@
 import time
-from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common import keys
+from selenium.webdriver.support.ui import WebDriverWait
+
 import locators
 
 
@@ -51,7 +49,7 @@ class InventoryPage(BasePage):
     def go_to_cart(self):
         self.driver.find_element(*self.locator.GO_TO_CART).click()
 
-def inventory_items_lst(self):
+"""def inventory_items_lst(self):"""
     
 
 
